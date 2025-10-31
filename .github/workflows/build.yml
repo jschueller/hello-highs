@@ -7,8 +7,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build
         run: |
-          sudo apt-get update -y && sudo apt-get install cmake
-          git clone -b latest https://github.com/ERGO-Code/HiGHS.git && cd HiGHS && cmake -DBLA_VENDOR=Generic -DBUILD_CXX_EXE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_UNITY_BUILD=ON -B build . && make -j4 -C build && sudo make install -C build && cd -
+          sudo apt-get update -y && sudo apt-get install cmake liblapack-dev libmetis-dev
+          git clone -b latest https://github.com/ERGO-Code/HiGHS.git && cd HiGHS && cmake -DHIPO=ON -DBLA_VENDOR=Generic -DBUILD_CXX_EXE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_UNITY_BUILD=ON -B build . && make -j4 -C build && sudo make install -C build && cd -
           cmake .
           make
 
